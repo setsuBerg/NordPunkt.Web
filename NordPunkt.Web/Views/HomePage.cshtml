@@ -2,9 +2,17 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-	Layout = null;
+	Layout = "MainLayout.cshtml";
 }
 
 <h1>@Model.PageTitle</h1>
 
 <p>@Model.IntroText</p>
+
+@foreach (var article in Model.Children<ArticlePage>())
+{
+	<h2>
+		<a href="@article.Url()">@article.ArticleTitle</a>
+    </h2>
+	<p>@article.Value("bpdyText")</p>
+}

@@ -1,0 +1,14 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ArticlePage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = null;
+}
+
+<h1>@Model.ArticleTitle</h1>
+
+
+
+<p>Finns det body text? @Model.HasValue("bodyText")</p>
+
+@Model.Value("bpdyText")

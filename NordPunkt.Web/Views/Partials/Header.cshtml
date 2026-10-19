@@ -1,8 +1,21 @@
-﻿
+﻿@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Extensions
+@using Umbraco.Cms.Web.Common.PublishedModels
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedContent>
+
+@{
+    var startPage = Model.Root();
+}
+
 <header>
     <h2>NordPunkt.</h2>
    
    <nav>
-      <a href="/">Startsidan</a>
+        <a href="@startPage.Url()">Nyheter</a>
+
+        @foreach (var item in startPage.Children<ContentPage>())
+        {
+            <a href="@item.Url()">@(item.Name)</a>
+        }
    </nav>
 </header>
